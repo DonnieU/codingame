@@ -80,8 +80,7 @@ n = 15
 l = 3
 # EXPECTED RESULT FROM SRC: 14
 
-"""
-src = ['X X X X X X X X X X X X X X X',
+src = ['C X X X X X X X X X X X X X X',
 'X X X X X X X X X X X X X X X',
 'X X X X X X X X X X X X X X X',
 'X X X X X X X X X X X X X X X',
@@ -98,7 +97,6 @@ src = ['X X X X X X X X X X X X X X X',
 'X X X X X X X X X X X X X X X']
 n = 15
 l = 6
-"""
 
 """
 If l = 6 and when using Euclidian distance,
@@ -152,6 +150,7 @@ for i in range(n):
 
 def dist(x, y, row, col):
     # d = math.sqrt((row-y)**2 + (col-x)**2)
+    # return int(d)
     d = l
     a = abs(row-y)
     b = abs(col-x)
@@ -165,9 +164,10 @@ def calc_light(row, col):
         for x in range(len(room)):
             distance = dist(x,y,row,col)
             val = l - distance
-            if val > 0:
-                 lit[x][y] = lit[x][y] + val
-                 # lit[x][y] = 1
+            # if val > 0:
+            if val > lit[x][y]:
+                 # lit[x][y] = lit[x][y] + val
+                 lit[x][y] = val
 
 
 for col in range(len(room)):

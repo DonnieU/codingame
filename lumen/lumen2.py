@@ -115,8 +115,7 @@ n = 20
 l = 3
 # EXPECTED RESULT FROM SRC: 
 
-""" THIS WORKS BUT FAILS THE BEHIND-THE-SCENES VALIDATORS """
-
+""" This solution passes all tests and behind-the-scenes validators """
 # Creates 2D list of n elements sublists from src
 room = [line.split(' ') for line in src]
 
@@ -143,9 +142,11 @@ def calc_light(row, col):
         for x in range(n):
             distance = dist(x,y,row,col)
             val = l - distance
-            if val > 0:
-                loc = x + y*n
-                lit[loc] = lit[loc] + val
+            # if val > 0:
+            loc = x + y*n
+            if val > lit[loc]:
+                # loc = x + y*n
+                lit[loc] = val
 
 
 for col in range(len(room)):
